@@ -39,6 +39,73 @@ class DetailScreen extends StatelessWidget{
               ),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 16,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(candi.name,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(onPressed: (){},
+                    icon: Icon(Icons.favorite_border),
+                    )
+                  ],
+                ),
+                SizedBox(height: 16,),
+                Row(
+                  children: [
+                    Icon(Icons.place, color: Colors.red,),
+                    SizedBox(width: 8,),
+                    SizedBox(width: 70,
+                      child: Text('Lokasi', style: TextStyle(
+                        fontWeight: FontWeight.bold
+                      ),
+                      ),
+                      ),
+                    Text(': ${candi.location}',),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.calendar_month, color: Colors.blue,),
+                    SizedBox(width: 8,),
+                    SizedBox(width: 70,
+                      child: Text('Dibangun', style: TextStyle(
+                          fontWeight: FontWeight.bold
+                      ),
+                      ),
+                    ),
+                    Text(': ${candi.built}',),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.house, color: Colors.green,),
+                    SizedBox(width: 8,),
+                    SizedBox(width: 70,
+                      child: Text('Tipe', style: TextStyle(
+                          fontWeight: FontWeight.bold
+                      ),
+                      ),
+                    ),
+                    Text(': ${candi.type}',),
+                  ],
+                ),
+                SizedBox(height: 16,),
+                Divider(color: Colors.deepPurple.shade100,),
+                SizedBox(height: 16,),
+                
+              ],
+            ),
+          ),
         ],
 
       ),
