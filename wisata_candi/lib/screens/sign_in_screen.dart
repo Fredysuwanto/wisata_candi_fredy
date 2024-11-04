@@ -40,7 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     TextFormField(
                       controller: _usernameController,
                       decoration: InputDecoration(
-                        labelText: "nama pengguna",
+                        labelText: "Nama Pengguna",
                         border: OutlineInputBorder(),
                       ),
                     ),
