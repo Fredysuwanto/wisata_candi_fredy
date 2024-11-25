@@ -36,17 +36,18 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: MainScreen(),
-      // home: DetailScreen(candi: candiList),
-      // home: HomeScreen(),
-      // home: ProfileScreen(),
-      // home: SignUpScreen(),
-      // home: SignInScreen(),
-      //  home: SearchScreen(),
+      home: const SignUpScreen(),
+      initialRoute: '/',
+      routes: {
+        '/homescreen' : (context) => const HomeScreen(),
+        '/signin' : (context) => SignInScreen(),
+        '/signup' : (context) => const SignUpScreen(),
+
+
+      },
     );
   }
 }
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -55,27 +56,27 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // TODO: 1. Deklarasikan varibel
+  // TODO: 1. Deklarasikan Variabel
   int _currentIndex = 0;
-
   final List<Widget> _children = [
-    const HomeScreen(),
-    const SearchScreen(),
-    const FavoriteScreen(),
-    const ProfileScreen(),
+    HomeScreen(),
+    SearchScreen(),
+    FavoriteScreen(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // TODO: 2. Buat properti body berupa widget yang ditampilkan
-      body:  _children[_currentIndex],
-      // TODO: 3. Buat properti bottomNavigationBar dengan nilai Theme
+      body: _children[_currentIndex],
+      // TODO: 3. Buat properti bottomNaviator dengan nilai Theme
       bottomNavigationBar: Theme(
-        // TODO: 4. Buat data dan child dari Theme
         data: Theme.of(context).copyWith(
           canvasColor: Colors.deepPurple[50],
         ),
+
+        // TODO: 4. Buat data dan child dari Theme
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index){
@@ -85,20 +86,20 @@ class _MainScreenState extends State<MainScreen> {
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.deepPurple,),
+              icon: Icon(Icons.home, color: Colors.deepPurple),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search, color: Colors.deepPurple,),
+              icon: Icon(Icons.search, color: Colors.deepPurple),
               label: 'Search',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.favorite, color: Colors.deepPurple,),
-              label: 'Favorite',
+                icon: Icon(Icons.favorite, color: Colors.deepPurple),
+                label: 'Favorite'
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Colors.deepPurple,),
-              label: 'Profile',
+                icon: Icon(Icons.person, color: Colors.deepPurple),
+                label: 'Profile'
             ),
           ],
           selectedItemColor: Colors.deepPurple,

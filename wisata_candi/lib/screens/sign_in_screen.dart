@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
    SignInScreen({super.key});
@@ -11,14 +12,32 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   //TODO 1 = Deklarasikan variabel
   final TextEditingController _usernameController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
-
   String _errorText = '';
-
   bool _isSignedIn = false;
-
   bool _obscurePassword =true;
+
+  void _signIn() async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String savedUsername = prefs.getString('username')?? '';
+    final String savedPassword = prefs.getString('password')?? '';
+    final String enteredUsername = _usernameController.text.trim();
+    final String enteredPassword = _passwordController.text.trim();
+
+    if(enteredUsername.isEmpty || enteredPassword.isEmpty){
+      setState(() {
+        _errorText ='nama pengguna ';
+      });
+      return;
+    }
+    if(enteredUsername.isEmpty || enteredPassword.isEmpty){
+      setState(() {
+        _errorText ='nama pengguna ';
+      });
+      return;
+    }
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +99,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             fontSize: 16
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap =(){},
+                            ..onTap =(){
+                            Navigator.pushNamed(context, '/signup');
+                            },
                         ),
                       ],
                     ),),
