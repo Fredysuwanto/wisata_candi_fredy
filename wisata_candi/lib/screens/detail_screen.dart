@@ -17,9 +17,8 @@ class DetailScreen extends StatelessWidget {
             // DetailHeader
             Stack(
               children: [
-
-                // image Utama
-                Padding(
+                Hero(tag: candi.imageAsset, child:Padding(
+                  // image Utama
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -30,6 +29,7 @@ class DetailScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
+                ),
                 ),
 
                 // tombol back kustom
